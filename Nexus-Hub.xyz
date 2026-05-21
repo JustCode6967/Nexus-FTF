@@ -1,0 +1,437 @@
+-- Hello skidder, how are you i hope your doing bad 🤡 
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+
+local Player = Players.LocalPlayer
+local PlayerGui = Player:WaitForChild("PlayerGui")
+
+pcall(function()
+	if PlayerGui:FindFirstChild("NexusLoader") then
+		PlayerGui.NexusLoader:Destroy()
+	end
+end)
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "NexusLoader"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.Parent = PlayerGui
+
+local BG = Instance.new("Frame")
+BG.Size = UDim2.new(1,0,1,0)
+BG.BackgroundColor3 = Color3.fromRGB(0,0,0)
+BG.BackgroundTransparency = 1
+BG.Parent = ScreenGui
+
+TweenService:Create(
+	BG,
+	TweenInfo.new(0.8, Enum.EasingStyle.Quint),
+	{
+		BackgroundTransparency = 0.3
+	}
+):Play()
+
+local Main = Instance.new("Frame")
+Main.Size = UDim2.new(0,470,0,250)
+Main.Position = UDim2.new(0.5,-235,0.5,-125)
+Main.BackgroundColor3 = Color3.fromRGB(12,12,16)
+Main.BorderSizePixel = 0
+Main.BackgroundTransparency = 1
+Main.Parent = BG
+
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0,22)
+
+TweenService:Create(
+	Main,
+	TweenInfo.new(0.8, Enum.EasingStyle.Quint),
+	{
+		BackgroundTransparency = 0
+	}
+):Play()
+
+local Stroke = Instance.new("UIStroke")
+Stroke.Color = Color3.fromRGB(140,0,255)
+Stroke.Thickness = 2
+Stroke.Transparency = 1
+Stroke.Parent = Main
+
+TweenService:Create(
+	Stroke,
+	TweenInfo.new(1),
+	{
+		Transparency = 0.1
+	}
+):Play()
+
+local UIGradientStroke = Instance.new("UIGradient")
+UIGradientStroke.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(140,0,255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(0,255,140))
+}
+UIGradientStroke.Parent = Stroke
+
+local Glow = Instance.new("ImageLabel")
+Glow.BackgroundTransparency = 1
+Glow.Image = "rbxassetid://5028857084"
+Glow.ScaleType = Enum.ScaleType.Slice
+Glow.SliceCenter = Rect.new(24,24,276,276)
+Glow.Size = UDim2.new(1,50,1,50)
+Glow.Position = UDim2.new(0,-25,0,-25)
+Glow.ImageColor3 = Color3.fromRGB(140,0,255)
+Glow.ImageTransparency = 1
+Glow.Parent = Main
+
+TweenService:Create(
+	Glow,
+	TweenInfo.new(1.2),
+	{
+		ImageTransparency = 0.3
+	}
+):Play()
+
+local TopLine = Instance.new("Frame")
+TopLine.Size = UDim2.new(1,0,0,4)
+TopLine.BackgroundColor3 = Color3.fromRGB(255,255,255)
+TopLine.BorderSizePixel = 0
+TopLine.Parent = Main
+
+local TopGradient = Instance.new("UIGradient")
+TopGradient.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(140,0,255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(0,255,140))
+}
+TopGradient.Parent = TopLine
+
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1,0,0,75)
+Title.Position = UDim2.new(0,0,0,28)
+Title.BackgroundTransparency = 1
+Title.Text = "NEXUS"
+Title.Font = Enum.Font.GothamBlack
+Title.TextSize = 46
+Title.TextColor3 = Color3.fromRGB(255,255,255)
+Title.TextTransparency = 1
+Title.Parent = Main
+
+local TitleGradient = Instance.new("UIGradient")
+TitleGradient.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(140,0,255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(0,255,140))
+}
+TitleGradient.Rotation = 10
+TitleGradient.Parent = Title
+
+TweenService:Create(
+	Title,
+	TweenInfo.new(1),
+	{
+		TextTransparency = 0
+	}
+):Play()
+
+local Sub = Instance.new("TextLabel")
+Sub.Size = UDim2.new(1,0,0,30)
+Sub.Position = UDim2.new(0,0,0,95)
+Sub.BackgroundTransparency = 1
+Sub.Text = "#1 FREE FTF SCRIPT"
+Sub.Font = Enum.Font.GothamBold
+Sub.TextSize = 18
+Sub.TextColor3 = Color3.fromRGB(255,255,255)
+Sub.TextTransparency = 1
+Sub.Parent = Main
+
+local SubGradient = Instance.new("UIGradient")
+SubGradient.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(140,0,255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(0,255,140))
+}
+SubGradient.Parent = Sub
+
+TweenService:Create(
+	Sub,
+	TweenInfo.new(1.2),
+	{
+		TextTransparency = 0
+	}
+):Play()
+
+task.spawn(function()
+	while Sub.Parent do
+		TweenService:Create(
+			Sub,
+			TweenInfo.new(1.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+			{
+				TextTransparency = 0.7
+			}
+		):Play()
+
+		task.wait(1.5)
+
+		TweenService:Create(
+			Sub,
+			TweenInfo.new(1.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+			{
+				TextTransparency = 0
+			}
+		):Play()
+
+		task.wait(1.5)
+	end
+end)
+
+local Login = Instance.new("TextLabel")
+Login.Size = UDim2.new(1,0,0,28)
+Login.Position = UDim2.new(0,0,0,130)
+Login.BackgroundTransparency = 1
+Login.Text = "Logged in as "..Player.Name
+Login.Font = Enum.Font.GothamMedium
+Login.TextSize = 15
+Login.TextColor3 = Color3.fromRGB(210,210,210)
+Login.TextTransparency = 1
+Login.Parent = Main
+
+TweenService:Create(
+	Login,
+	TweenInfo.new(1.4),
+	{
+		TextTransparency = 0
+	}
+):Play()
+
+local Desc = Instance.new("TextLabel")
+Desc.Size = UDim2.new(1,-40,0,35)
+Desc.Position = UDim2.new(0,20,0,160)
+Desc.BackgroundTransparency = 1
+Desc.Text = "Initializing premium modules..."
+Desc.Font = Enum.Font.GothamMedium
+Desc.TextSize = 15
+Desc.TextColor3 = Color3.fromRGB(180,180,180)
+Desc.TextTransparency = 1
+Desc.Parent = Main
+
+TweenService:Create(
+	Desc,
+	TweenInfo.new(1.5),
+	{
+		TextTransparency = 0
+	}
+):Play()
+
+local BarBG = Instance.new("Frame")
+BarBG.Size = UDim2.new(0,370,0,18)
+BarBG.Position = UDim2.new(0.5,-185,1,-60)
+BarBG.BackgroundColor3 = Color3.fromRGB(25,25,30)
+BarBG.BorderSizePixel = 0
+BarBG.Parent = Main
+
+Instance.new("UICorner", BarBG).CornerRadius = UDim.new(1,0)
+
+local Bar = Instance.new("Frame")
+Bar.Size = UDim2.new(0,0,1,0)
+Bar.BackgroundColor3 = Color3.fromRGB(255,255,255)
+Bar.BorderSizePixel = 0
+Bar.Parent = BarBG
+
+Instance.new("UICorner", Bar).CornerRadius = UDim.new(1,0)
+
+local BarGradient = Instance.new("UIGradient")
+BarGradient.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(140,0,255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(0,255,140))
+}
+BarGradient.Rotation = 15
+BarGradient.Parent = Bar
+
+local Percent = Instance.new("TextLabel")
+Percent.Size = UDim2.new(1,0,0,25)
+Percent.Position = UDim2.new(0,0,1,-30)
+Percent.BackgroundTransparency = 1
+Percent.Text = "0%"
+Percent.Font = Enum.Font.GothamBold
+Percent.TextSize = 16
+Percent.TextColor3 = Color3.fromRGB(255,255,255)
+Percent.Parent = Main
+
+for i = 1,20 do
+	local Dot = Instance.new("Frame")
+	Dot.Size = UDim2.new(0,math.random(2,4),0,math.random(2,4))
+	Dot.Position = UDim2.new(math.random(),0,math.random(),0)
+	Dot.BackgroundColor3 = Color3.fromRGB(140,0,255)
+	Dot.BackgroundTransparency = 0.4
+	Dot.BorderSizePixel = 0
+	Dot.Parent = Main
+
+	Instance.new("UICorner", Dot).CornerRadius = UDim.new(1,0)
+
+	local DotGradient = Instance.new("UIGradient")
+	DotGradient.Color = ColorSequence.new{
+		ColorSequenceKeypoint.new(0, Color3.fromRGB(140,0,255)),
+		ColorSequenceKeypoint.new(1, Color3.fromRGB(0,255,140))
+	}
+	DotGradient.Parent = Dot
+
+	task.spawn(function()
+		while Dot.Parent do
+			TweenService:Create(
+				Dot,
+				TweenInfo.new(math.random(3,5), Enum.EasingStyle.Sine),
+				{
+					Position = UDim2.new(math.random(),0,math.random(),0),
+					BackgroundTransparency = math.random(4,8)/10
+				}
+			):Play()
+
+			task.wait(math.random(3,5))
+		end
+	end)
+end
+
+task.spawn(function()
+	while Glow.Parent do
+		TweenService:Create(
+			Glow,
+			TweenInfo.new(2.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+			{
+				ImageTransparency = 0.55
+			}
+		):Play()
+
+		task.wait(2.5)
+
+		TweenService:Create(
+			Glow,
+			TweenInfo.new(2.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+			{
+				ImageTransparency = 0.25
+			}
+		):Play()
+
+		task.wait(2.5)
+	end
+end)
+
+for i = 0,100 do
+	Bar:TweenSize(
+		UDim2.new(i/100,0,1,0),
+		Enum.EasingDirection.Out,
+		Enum.EasingStyle.Quint,
+		0.09,
+		true
+	)
+
+	Percent.Text = i.."%"
+
+	if i == 15 then
+		Desc.Text = "Checking User"
+	elseif i == 35 then
+		Desc.Text = "Loading interface..."
+	elseif i == 55 then
+		Desc.Text = "Connecting to Nexus Service..."
+	elseif i == 75 then
+		Desc.Text = "Loading premium features"
+	elseif i == 95 then
+		Desc.Text = "Finalizing..."
+	elseif i == 100 then
+		Desc.Text = "Loaded successfully."
+	end
+
+	task.wait(0.09)
+end
+
+task.wait(1.5)
+
+TweenService:Create(
+	Main,
+	TweenInfo.new(1, Enum.EasingStyle.Quint),
+	{
+		BackgroundTransparency = 1
+	}
+):Play()
+
+TweenService:Create(
+	Stroke,
+	TweenInfo.new(1),
+	{
+		Transparency = 1
+	}
+):Play()
+
+TweenService:Create(
+	Glow,
+	TweenInfo.new(1),
+	{
+		ImageTransparency = 1
+	}
+):Play()
+
+TweenService:Create(
+	BG,
+	TweenInfo.new(1),
+	{
+		BackgroundTransparency = 1
+	}
+):Play()
+
+task.wait(0.3)
+
+TweenService:Create(
+	Title,
+	TweenInfo.new(1),
+	{
+		TextTransparency = 1
+	}
+):Play()
+
+TweenService:Create(
+	Sub,
+	TweenInfo.new(1),
+	{
+		TextTransparency = 1
+	}
+):Play()
+
+TweenService:Create(
+	Login,
+	TweenInfo.new(1),
+	{
+		TextTransparency = 1
+	}
+):Play()
+
+TweenService:Create(
+	Desc,
+	TweenInfo.new(1),
+	{
+		TextTransparency = 1
+	}
+):Play()
+
+TweenService:Create(
+	Percent,
+	TweenInfo.new(1),
+	{
+		TextTransparency = 1
+	}
+):Play()
+
+TweenService:Create(
+	BarBG,
+	TweenInfo.new(1),
+	{
+		BackgroundTransparency = 1
+	}
+):Play()
+
+TweenService:Create(
+	Bar,
+	TweenInfo.new(1),
+	{
+		BackgroundTransparency = 1
+	}
+):Play()
+
+task.wait(1.2)
+
+ScreenGui:Destroy()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/JustCode6967/Nexus-FTF/refs/heads/main/Nexus-FTF.xyz", true))()
